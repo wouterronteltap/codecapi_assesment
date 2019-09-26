@@ -1,10 +1,11 @@
 import {Dispatch} from "react";
+import { AxiosResponse, AxiosError } from 'axios';
 
-// TODO REWRITE PER ACTION
+type Actions = "FETCH_INIT" | "FETCH_SUCCESS" | "FETCH_FAILURE" | "SET_PAGE" | "SET_DEBOUNCED_QUERY"
+
 export interface IAction {
-    type: string;
-    // TODO => PROPER TYPE FOR PAYLOAD
-    payload?: any;
+    type: Actions;
+    payload: any;
 }
 
 export interface ILinks {
@@ -24,26 +25,26 @@ export type IUser = {
     name?: string,
     location?: string,
     bio?: string,
-    blog?: string,
     repos_url: string,
     html_url: string
 
 }
 
-export interface IUsersResponse {
+export interface IResponse extends AxiosResponse{
     users:  Array<IUser>,
-    links: ILinks,
-    total: number
+    links?: ILinks,
+    total?: number
 }
 
-export interface IState<T> {
+export interface IState {
     query: string,
     currentPage: number,
     total: number,
     lastPage: number,
     isLoading: boolean;
     isError: boolean;
-    data?: T;
+    data: IResponse | null;
+    error: AxiosError | null
 }
 
 export interface IDispatch {

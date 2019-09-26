@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useState, useEffect } from 'react';
+import axios, { AxiosResponse } from 'axios';
 
 import { useAppDispatch } from '../context';
+import { IResponse } from "../types";
 
 
 export const useApi = (url: string = '') => {
@@ -9,16 +10,16 @@ export const useApi = (url: string = '') => {
     const { dispatch } = useAppDispatch();
     useEffect(() => {
         let canceled = false;
-        const fetchData = async () => {
+        const fetchData = async (): Promise<void> => {
             dispatch({ type: 'FETCH_INIT', payload: undefined });
             try {
-                const result = await axios(query);
+                const result: AxiosResponse<IResponse> = await axios(query);
                 if (!canceled) {
                     dispatch({ type: 'FETCH_SUCCESS', payload: result.data });
                 }
             } catch (error) {
                 if (!canceled) {
-                    dispatch({ type: 'FETCH_FAILURE', payload: undefined });
+                    dispatch({ type: 'FETCH_FAILURE', payload: error.message });
                 }
             }
         };

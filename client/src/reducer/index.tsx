@@ -1,12 +1,15 @@
-import {parse, ParsedUrlQuery} from 'querystring';
-import { IUsersResponse, IUser, IState, IAction } from "../types";
+import { IState, IAction } from "../types";
 
-// TODO FIX THIS
-export const appReducer = (state: IState<any>, action: IAction) :IState<any> => {
+export const appReducer = (state: IState, action: IAction) :IState => {
     const {payload} = action;
     switch (action.type) {
         case 'FETCH_INIT':
-            return { ...state, isLoading: true, isError: false};
+            return {
+                ...state,
+                isLoading: true,
+                isError: false,
+                error: null
+            };
         case 'FETCH_SUCCESS':
             return {
                 ...state,
@@ -18,7 +21,8 @@ export const appReducer = (state: IState<any>, action: IAction) :IState<any> => 
             return {
                 ...state,
                 isLoading: false,
-                isError: true
+                isError: true,
+                error: payload
             };
         case 'SET_DEBOUNCED_QUERY': {
             return {

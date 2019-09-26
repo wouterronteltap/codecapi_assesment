@@ -1,6 +1,5 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, RouteComponentProps} from 'react-router-dom';
-import * as H from 'history';
 
 import { AppProvider } from './provider';
 import { ListContainer } from './components/list/container';

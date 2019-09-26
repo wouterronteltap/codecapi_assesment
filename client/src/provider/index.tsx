@@ -9,7 +9,6 @@ interface IProps {
 
 const AppProvider = ({children}: IProps) => {
     const [state, dispatch] = React.useReducer(appReducer, initialState);
-    console.log(state);
     return (
         <AppStateContext.Provider value={state}>
             <AppDispatchContext.Provider value={{dispatch}}>

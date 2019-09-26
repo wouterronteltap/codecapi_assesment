@@ -14,7 +14,7 @@ import { CONSTANTS } from '../../utils/contants';
 
 
 const ListContainer = () => {
-    const { query, currentPage, isLoading, isError, data } = useAppState();
+    const { query, currentPage, isLoading, isError, data, error } = useAppState();
     const url = CONSTANTS.GET_USERS_URL(query, currentPage);
     const [setUrl]  = useApi();
     useEffect(() => {
@@ -26,7 +26,7 @@ const ListContainer = () => {
         <div style={{width: 500}}>
             <Typography variant={'h6'}>Welcome to the GitHub User Search App!</Typography>
             <SearchInput lastquery={query}/>
-            {!data && query && !isLoading &&
+            {!data && !error && query && !isLoading &&
                 <Typography variant={'body1'}>No users available for this query.</Typography>}
             {data && !isLoading &&
                 <>
@@ -35,8 +35,8 @@ const ListContainer = () => {
                     <PaginationContainer currentPage={currentPage} links={data.links} />
                 </>}
 
-            {isLoading && <h1>loading ...</h1>}
-            {isError && <h1>Something went wrong</h1>}
+            {isLoading && <Typography variant={'body1'}>loading ...</Typography>}
+            {isError && <Typography variant={'body1'}>{error}</Typography>}
         </div>
     )
 }

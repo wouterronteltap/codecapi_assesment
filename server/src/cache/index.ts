@@ -7,7 +7,6 @@ export const initClient = () => {
 }
 
 export const addToClient = (query: string, data: object): void => {
-    console.log(data);
     client.set(query, JSON.stringify(data))
 }
 

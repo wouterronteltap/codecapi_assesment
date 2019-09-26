@@ -3,9 +3,11 @@
   "version": "1.0.0",
   "description": "Coding assignment for codecapi",
   "scripts": {
+    "clientdev": "cd client && yarn start",
     "client": "cd client && open http://localhost:5000 && serve -s build",
     "server": "cd server && yarn start",
     "start": "concurrently \"yarn server\" \"yarn client\"",
+    "startdev": "concurrently \"yarn server\" \"yarn clientdev\"",
     "setupclient": "cd client && yarn",
     "setupserver": "cd server && yarn",
     "setup": "concurrently \"yarn setupclient\" \"yarn setupserver\""

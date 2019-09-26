@@ -5,16 +5,15 @@ import { UserDetails } from './details';
 import { useApi } from "../../hooks/useApi";
 
 import { CONSTANTS } from "../../utils/contants";
-import { IUser } from "../../types";
+import {Typography} from "@material-ui/core";
 
 interface IProps {
     login: string
 }
 
-// TODO ADDED NEEDED STATE CHANGES AS PROPS
 const DetailsContainer = (props: IProps) => {
     const {login} = props;
-    const { data, isError, isLoading } = useAppState();
+    const { data, isError, isLoading, error } = useAppState();
     const url = CONSTANTS.GET_USER_DETAILS_URL(login);
     const [setUrl] = useApi(url);
     useEffect(() => {
@@ -22,9 +21,9 @@ const DetailsContainer = (props: IProps) => {
     }, [login])
     return(
         <>
-            {data && <UserDetails user={ data }/>}
-            {isLoading && <h1>loading ...</h1>}
-            {isError && <h1>Something went wrong</h1>}
+            {data && !isLoading && !isError && <UserDetails data={ data }/>}
+            {isLoading && <Typography variant={'body1'}>loading ...</Typography>}
+            {isError && <Typography variant={'body1'}>{error}</Typography>}
         </>
     )
 };

@@ -1,5 +1,5 @@
-import React, { Dispatch } from "react";
-import {IDispatch, IState, IUser, IUsersResponse} from "../types";
+import React from "react";
+import {IDispatch, IState } from "../types";
 
 
 const initialState = {
@@ -8,14 +8,16 @@ const initialState = {
     total: 0,
     lastPage: 0,
     isLoading: false,
-    isError: false
+    isError: false,
+    data: null,
+    error: null
 };
 
 const initialDispatch = {
     dispatch: () => {}
 };
-// TODO FIX THIS ANY
-const AppStateContext = React.createContext<IState<any>>(initialState);
+
+const AppStateContext = React.createContext<IState>(initialState);
 const AppDispatchContext = React.createContext<IDispatch>(initialDispatch);
 // const AppDispatchContext = React.createContext<Dispatch<IAction>>({} as Dispatch<IAction>);
 

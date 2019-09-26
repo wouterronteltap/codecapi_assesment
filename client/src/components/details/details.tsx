@@ -1,16 +1,15 @@
 import React from 'react';
 import { Avatar, List, ListItem, ListItemText, ListItemAvatar } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import { IUser } from "../../types";
-
-
+import { IResponse } from "../../types";
 
 interface IProps {
-    user: IUser
+    data: IResponse
 }
 
 const UserDetails = React.memo((props: IProps) => {
-    const {login, avatar_url, company, followers,following, name, location, bio, blog, repos_url, html_url } = props.user;
+    const { users }  = props.data;
+    const {login, avatar_url, company, followers,following, name, location, bio, repos_url, html_url } = users[0];
     return(
         <List dense={true}>
             <ListItem>
@@ -24,6 +23,10 @@ const UserDetails = React.memo((props: IProps) => {
             <ListItem>
                 <ListItemText primary={"Name: "} secondary={name}/>
             </ListItem>
+            {location &&
+                <ListItem>
+                    <ListItemText primary={"Location: "} secondary={name}/>
+                </ListItem>}
             <ListItem>
                 <ListItemText primary={"Profile: "} secondary={name}/>
             </ListItem>

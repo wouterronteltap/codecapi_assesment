@@ -11,18 +11,15 @@ const fetchUsers = async (params: IParams): Promise<AxiosResponse> => {
     try{
         return await axios(CONSTANTS.GET_USERS_URL(params.query, page));
     }catch (e) {
-        console.log(e);
-        return e
+        return e.response;
     }
 }
 
 const fetchUser = async (params: IParams): Promise<AxiosResponse> => {
-    console.log(params.query);
     try{
         return await axios(CONSTANTS.GET_USER_DETAILS_URL(params.query));
     }catch (e) {
-        console.log(e);
-        return e
+        return e.response;
     }
 }
 

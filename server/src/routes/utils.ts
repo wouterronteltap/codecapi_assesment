@@ -1,3 +1,5 @@
+import { GITHUB_URL } from '../app';
+
 interface IParsedLinks {
     [key: string]: string
 }
@@ -20,8 +22,6 @@ export const linkHeaderParser = (header: string): IParsedLinks => {
     });
     return links;
 }
-
-const GITHUB_URL: string = 'https://api.github.com';
 
 interface IConstants {
     GET_USERS_URL(query:string, page:string): string,

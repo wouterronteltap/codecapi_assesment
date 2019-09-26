@@ -1,5 +1,5 @@
 import React from 'react';
-import { Badge, IconButton } from '@material-ui/core';
+import { IconButton } from '@material-ui/core';
 
 interface IProps {
     onClick: (e: React.MouseEvent<HTMLDivElement | HTMLButtonElement>) => void,
