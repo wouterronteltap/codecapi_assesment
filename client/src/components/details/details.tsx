@@ -1,10 +1,11 @@
 import React from 'react';
-import { Avatar, List, ListItem, ListItemText, ListItemAvatar } from '@material-ui/core';
-import { Link } from 'react-router-dom';
+import { Avatar, List, ListItem, ListItemText, ListItemAvatar, Button } from '@material-ui/core';
+import { History } from "history";
 import { IResponse } from "../../types";
 
 interface IProps {
-    data: IResponse
+    data: IResponse,
+    history: History
 }
 
 const UserDetails = React.memo((props: IProps) => {
@@ -54,11 +55,9 @@ const UserDetails = React.memo((props: IProps) => {
             <ListItem>
                 <ListItemText primary={"Following: "} secondary={following}/>
             </ListItem>
-            <ListItem>
-                <Link to={'/'}>
-                    back
-                </Link>
-            </ListItem>
+            <Button variant={'outlined'} onClick={() => props.history.goBack()}>
+                back
+            </Button>
         </List>
     )
 });

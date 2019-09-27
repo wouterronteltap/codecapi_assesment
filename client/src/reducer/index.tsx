@@ -24,19 +24,6 @@ export const appReducer = (state: IState, action: IAction) :IState => {
                 isError: true,
                 error: payload
             };
-        case 'SET_DEBOUNCED_QUERY': {
-            return {
-                ...state,
-                query: payload.query,
-                currentPage: 1
-            }
-        }
-        case 'SET_PAGE': {
-            return {
-                ...state,
-                currentPage: payload
-            }
-        }
         default: {
             throw new Error(`Unhandled action type: ${action.type}`)
         }

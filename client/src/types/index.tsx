@@ -1,7 +1,7 @@
 import {Dispatch} from "react";
 import { AxiosResponse, AxiosError } from 'axios';
 
-type Actions = "FETCH_INIT" | "FETCH_SUCCESS" | "FETCH_FAILURE" | "SET_PAGE" | "SET_DEBOUNCED_QUERY"
+type Actions = "FETCH_INIT" | "FETCH_SUCCESS" | "FETCH_FAILURE";
 
 export interface IAction {
     type: Actions;
@@ -37,10 +37,7 @@ export interface IResponse extends AxiosResponse{
 }
 
 export interface IState {
-    query: string,
-    currentPage: number,
     total: number,
-    lastPage: number,
     isLoading: boolean;
     isError: boolean;
     data: IResponse | null;

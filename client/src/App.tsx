@@ -15,10 +15,12 @@ interface MatchProps extends RouteComponentProps<MatchParams> {
 const App = () => (
     <Router>
         <AppProvider>
-            <Route path={'/user/:login'} render={( { match }:MatchProps ) => (
-                <DetailsContainer login={match.params.login} />)}/>
-            <Route path={'/users'} component={ListContainer}/>
-            <Route exact path={'/'} component={ListContainer}/>
+            <Route path={'/user/:login'} render={({ match, history }:MatchProps ) => (
+                <DetailsContainer login={match.params.login} history={history}/>)}/>
+            <Route path={'/users'} render={({history}:RouteComponentProps) => (
+                <ListContainer history={history} />)} />
+            <Route exact path={'/'} render={({history }:RouteComponentProps) => (
+                <ListContainer history={history} />)}/>
         </AppProvider>
     </Router>
 );
