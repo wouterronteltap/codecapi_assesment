@@ -1,0 +1,50 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The CustomListItem Component renders correctly 1`] = `
+<DocumentFragment>
+  <li
+    class="MuiListItem-container"
+  >
+    <div
+      class="MuiListItem-root MuiListItem-gutters MuiListItem-secondaryAction"
+    >
+      <div
+        class="MuiListItemAvatar-root"
+      >
+        <div
+          class="MuiAvatar-root MuiAvatar-circle"
+        >
+          <img
+            class="MuiAvatar-img"
+            src="fakepath.png"
+          />
+        </div>
+      </div>
+      <div
+        class="MuiListItemText-root MuiListItemText-multiline"
+      >
+        <span
+          class="MuiTypography-root MuiListItemText-primary MuiTypography-body1"
+        >
+          Woutertje
+        </span>
+        <p
+          class="MuiTypography-root MuiListItemText-secondary MuiTypography-body2 MuiTypography-colorTextSecondary"
+        >
+          Score: 9
+        </p>
+      </div>
+    </div>
+    <div
+      class="MuiListItemSecondaryAction-root"
+    >
+      <a
+        class="showmore"
+        href="/user/Woutertje"
+      >
+        more
+      </a>
+    </div>
+  </li>
+</DocumentFragment>
+`;

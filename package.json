@@ -2,19 +2,20 @@
   "name": "codecapi_assignment",
   "version": "1.0.0",
   "description": "Coding assignment for codecapi",
+  "private": true,
   "scripts": {
-    "clientdev": "cd client && yarn start",
-    "client": "cd client && open http://localhost:5000 && serve -s build",
-    "server": "cd server && yarn start",
+    "clientdev": "yarn workspace client start",
+    "client": "yarn workspace client open",
+    "server": "yarn workspace server start",
     "start": "concurrently \"yarn server\" \"yarn client\"",
-    "startdev": "concurrently \"yarn server\" \"yarn clientdev\"",
-    "setupclient": "cd client && yarn",
-    "setupserver": "cd server && yarn",
-    "setup": "concurrently \"yarn setupclient\" \"yarn setupserver\""
+    "startdev": "concurrently \"yarn server\" \"yarn clientdev\""
   },
   "author": "Wouter Ronteltap",
   "license": "ISC",
+  "workspaces": [
+    "packages/*"
+  ],
   "dependencies": {
-    "concurrently": "^4.1.2"
+    "concurrently": "^5.0.0"
   }
 }
